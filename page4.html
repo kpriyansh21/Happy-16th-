@@ -1,0 +1,948 @@
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Your Gifts 🤍</title>  <!-- GOOGLE FONTS -->  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">  
+<link rel="preconnect" href="https://fonts.googleapis.com">  
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+<link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Chewy&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">  
+<style>  
+* {  
+  margin: 0;  
+  padding: 0;  
+  box-sizing: border-box;  
+}  body {
+min-height: 100vh;
+background:
+url("bg4.png") center / cover no-repeat;
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: 'Poppins', sans-serif;
+}
+
+.container {
+width: 100%;
+max-width: 520px;
+padding: 32px 20px 60px;
+text-align: center;
+}
+
+/* ================= TITLE SECTION ================= */
+
+.title-wrapper {
+font-family: Sour Gummy;
+position: relative;
+margin-bottom: 36px;
+}
+/* ================= GIFTS GRID ================= */
+
+.gifts-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 18px;
+}
+
+.gift-tile:not(.flip):hover {
+transform: translateY(-4px);
+box-shadow: 0 14px 32px rgba(255, 182, 193, 0.45);
+}
+
+.gift-number {
+font-family: 'Playfair Display', serif;
+font-size: 1.8rem;
+color: #d4af37;
+margin-bottom: 6px;
+}
+
+.gift-label {
+font-size: 0.85rem;
+opacity: 0.85;
+}
+
+.lock {
+position: absolute;
+top: 12px;
+right: 14px;
+font-size: 0.9rem;
+opacity: 0.6;
+}
+
+
+.footer-text {
+font-family: Sour Gummy;
+margin-top: 36px;
+font-size: 0.8rem;
+opacity: 0.6;
+font-style: italic;
+}
+
+.balloon {
+position: fixed;
+bottom: -140px;
+width: 54px;
+height: 72px;
+border-radius: 50% 50% 45% 45%;
+animation: balloon-rise linear forwards;
+z-index: 50 ;
+}
+.container {
+position: relative;
+z-index: 10;
+}
+/* Curved string */
+.balloon::after {
+content: "";
+position: absolute;
+top: 64px;
+left: 50%;
+width: 24px;
+height: 90px;
+transform: translateX(-50%);
+background: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='24' height='90'>\
+<path d='M12 0 C2 20 22 40 12 60 C2 80 22 100 12 120' \
+stroke='rgba(0,0,0,0.35)' stroke-width='1.4' fill='none'/>\
+</svg>") no-repeat center;
+}
+.balloon::before {
+content: "";
+position: rgb(255,255,255);
+bottom: -6px;
+left: 50%;
+transform: translateX(-50%);
+width: 10px;
+height: 8px;
+background: inherit;
+border-radius: 0 0 4px 4px;
+}
+.confetti {
+position: fixed;
+bottom: -20px;
+width: 8px;
+height: 12px;
+opacity: 0.9;
+animation: confetti-fall linear forwards;
+z-index: 3;
+}
+.balloon.gold {
+z-index: 40 ;
+opacity: 0.9;
+}
+
+@keyframes balloon-rise {
+to {
+transform: translateY(-140vh);
+}
+}
+@keyframes confetti-fall {
+0% {
+transform: translateY(0) rotate(0deg);
+opacity: 1;
+}
+25% {
+transform: translateY(-140px) rotate(180deg);
+}
+100% {
+transform: translateY(110vh) rotate(360deg);
+opacity: 0;
+}
+} 
+.gift-back {
+  opacity: 1 !important;
+}
+.gift-tile {
+font-family: Averia Libre;
+position: relative;
+aspect-ratio: 1 / 1;
+border-radius: 20px;
+overflow: hidden;
+background: rgba(255,255,255,0.25);
+box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+}
+
+.gift-bg {
+position: absolute;
+inset: 0;
+background-size: cover;
+background-position: center;
+filter: blur(14px) brightness(0.9);
+transform: scale(1.1);
+z-index: 0;
+}
+.gift-dark-overlay {
+position: absolute; 
+inset: 0;
+background-color: rgba(0, 0, 0, 0.79);  black with 79% opacity 
+z-index: 1;           
+pointer-events: none;  
+filter: none !important;
+transform: none !important;
+}
+
+.gift-roman {
+background: linear-gradient(180deg, #f5e6a8, #d4af37);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+font-family: 'Playfair Display', serif;
+font-size: 1.5rem;
+color: #d4af37;
+text-shadow:
+0 1px 0 rgba(255,255,255,0.35),
+0 2px 4px rgba(0,0,0,0.45); 
+}
+.gift-roman {
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+} 
+
+.gift-lock {
+transition: transform 0.3s ease, opacity 0.3s ease;
+font-size: 1.1rem;
+position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 1.2rem;
+  opacity: 0.9;
+  z-index: 6;
+}
+.gift-tile.unlocked .gift-lock {
+transform: scale(1.2);
+opacity: 1;
+}
+
+
+/* ========== FRONT FACE BADGES ========== */
+
+
+
+/* Roman – top left (front) */
+.gift-front .gift-roman {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  z-index: 6;
+}
+
+/* Emoji / lock – top right (front) */
+.gift-front .gift-lock {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 6;
+} 
+.gift-tile {
+perspective: 1200px;
+}
+
+.gift-inner {
+width: 100%;
+height: 100%;
+position: relative;
+transform-style: preserve-3d;
+transition: transform 0.8s cubic-bezier(.4,.2,.2,1);
+will-change: transform;
+}
+
+.gift-tile.flip .gift-inner {
+transform: rotateY(180deg);
+}
+
+.gift-front,
+.gift-back {
+position: absolute;
+inset: 0;
+backface-visibility: hidden;
+border-radius: 20px;
+z-index: 2;
+}
+/* Internal layout fix — DO NOT REMOVE ABSOLUTE POSITION */
+
+.gift-back-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.continue-btn {
+margin-top: 14px;
+padding: 10px 22px;
+border-radius: 20px;
+border: none;
+background: #FFD700;
+box-shadow: 1px 2px #fff;
+color: #000;
+font-weight: 500;
+cursor: pointer;
+}
+ 
+.gift-top.back-badge {
+position: absolute;
+top: 12px;
+left: 14px;
+right: 14px;
+}
+
+
+.title-wrapper h1 {
+font-family: 'Playfair Display', serif;
+font-size: 2rem;
+margin-bottom: 6px;
+}
+
+.subtitle {
+font-size: 0.9rem;
+opacity: 0.75;
+line-height: 1.4;
+}
+.heading{
+font-family:Chewy ;
+} 
+.gift-back {
+  justify-content: space-between;
+}
+.gift-title {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: 90%;
+  margin: 0 auto; 
+  text-shadow: 1px 1px rgba(0,0,0,0.5);
+}
+.gift-back .continue-btn {
+  margin-bottom: 6px;
+} 
+.gift-center { 
+  width: 100%; 
+  height: 100%;
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  z-index: 6;
+}
+.gift-timer {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 1px; 
+  text-shadow: 1px 1px rgba(0,0,0,0.5);
+}
+
+.gift-unlock-time {
+  margin-top: 8px;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.75);
+  display: block; 
+  text-shadow: 1px 1px rgba(0,0,0,0.5);
+}
+
+.gift-unlock-text {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  color: #ffffff;
+  opacity: 0.9;
+  display: none;
+  white-space: pre-line;
+} 
+/* ================= BACK BADGE POSITIONING ================= */
+
+.gift-back .gift-top.back-badge {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  right: 14px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  z-index: 6;
+  pointer-events: none;
+}
+
+
+.gift-unlock-time,
+.gift-unlock-text {
+  max-width: 95%;
+  text-align: center;
+  line-height: 1.4;
+} 
+
+/* ROMAN NUMBER */
+.gift-back .gift-roman {
+  position: static;
+  transform: none;
+}
+
+/* EMOJI */
+.gift-back .gift-lock {
+  position: static;
+  transform: none;
+} 
+
+/* ================= BACK FACE: CLEAN & FINAL ================= */
+
+.gift-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  border-radius: 20px;
+}
+
+/* Back top bar container */
+.gift-back .gift-top.back-badge {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  right: 14px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  z-index: 30;
+  pointer-events: none;
+}
+
+/* Roman — top left (BACK only) */
+.gift-back .gift-roman {
+  position: static;
+  font-size: 1.4rem;
+}
+
+/* Emoji — top right (BACK only) */
+.gift-back .gift-lock {
+  position: static;
+  font-size: 1.4rem;
+  opacity: 1;
+} 
+/* ================= FRONT FACE — FINAL ================= */
+
+.gift-front {
+  position: absolute;
+  inset: 0;
+}
+
+/* Top badges */
+.gift-front .gift-top {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  right: 14px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  z-index: 30;
+  pointer-events: none;
+}
+
+/* Roman — top left */
+.gift-front .gift-roman {
+  position: static;
+}
+
+/* Emoji — top right */
+.gift-front .gift-lock {
+  position: static;
+}
+
+/* Center content (timer / text) */
+.gift-front .gift-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} 
+.gift-unlock-time {
+  position: absolute;
+  bottom: 16px; /* or wherever you want it below the tile */
+  width: 100%;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+  display: block;
+  pointer-events: none; /* so it doesn’t block clicks */
+} 
+.gift-back-button {
+  position: absolute;      /* make it absolute relative to .gift-back */
+  bottom: 1px;            /* 13px above the bottom of the tile */
+  left: 50%;               /* center horizontally */
+  transform: translateX(-50%); /* actually center it */
+  margin: 0;               /* remove any extra margin that can shift it */
+}
+</style>
+
+</head>  
+<body>  
+<div class="container">  
+<div class="title-wrapper">  
+  <h1 class="heading">Happy Birthday, Piyansi 🤍</h1>  
+  <div class="subtitle">  
+   Here Are Your Gifts Rasmalai :) , <br>  
+   Each Surprise is a small reminder of how much you mean to me ☻
+     
+  </div>  </div>    <!-- GIFTS -->    <div class="gifts-grid">  
+<div class="gift-tile locked" data-id="1">     <div class="gift-inner">  <!-- FRONT -->  
+<div class="gift-front">  
+  <div class="gift-bg"></div>   
+
+  <div class="gift-top">  
+    <span class="gift-roman"></span>  
+    <span class="gift-lock">🔒</span>  
+  </div>  
+
+  <div class="gift-center">  
+    <div class="gift-timer"></div>  
+    <div class="gift-unlock-text"></div>  <div class="gift-unlock-time"> " I am ready to be seen ,<br> tap me " </div>
+  </div>  
+</div>  
+
+<!-- BACK -->  
+<div class="gift-back">   
+<div class="gift-bg"></div>   
+<div class="gift-top back-badge">  
+<span class="gift-roman"></span>  
+<span class="gift-lock"></span>
+
+  </div>  
+<div class="gift-back-title">  
+    <div class="gift-title"></div>  
+  </div>    <div class="gift-back-button">  
+    <button class="continue-btn">Yayayayaa!:3 </button>  
+  </div>  
+    </div>    </div>  
+</div>   
+<div class="gift-tile locked" data-id="2">  
+  <div class="gift-inner">  <!-- FRONT -->  
+<div class="gift-front">
+
+<div class="gift-bg"></div>   
+      <div class="gift-top">  
+        <span class="gift-roman"></span>  
+        <span class="gift-lock">🔒</span>  
+      </div>  <div class="gift-center">  
+    <div class="gift-timer"></div>  
+    <div class="gift-unlock-text"></div>  <div class="gift-unlock-time">There is no rush, <br> Come see me at 9:00 Am • EST</div> 
+  </div>  
+</div>  
+
+<!-- BACK -->  
+<div class="gift-back">   
+<div class="gift-bg"></div>   
+<div class="gift-top back-badge">  
+<span class="gift-roman"></span>  
+<span class="gift-lock"></span>
+
+  </div>  
+<div class="gift-back-title">  
+    <div class="gift-title"></div>  
+  </div>    <div class="gift-back-button">  
+<button class="continue-btn">got_what?!?? </button>  
+  </div>  
+    </div>    </div>  
+</div>  
+<div class="gift-tile locked" data-id="3">  
+  <div class="gift-inner">  
+    <!-- FRONT -->  
+    <div class="gift-front">  
+<div class="gift-bg"></div>   
+      <div class="gift-top">  
+        <span class="gift-roman"></span>  
+        <span class="gift-lock">🔒</span>  
+      </div>  <div class="gift-center">  
+    <div class="gift-timer"></div>  
+    <div class="gift-unlock-text"></div>  <div class="gift-unlock-time"> Beware Surprise Arriving at <br> 
+    12:00 Pm • EST </div>
+  </div>  
+</div>  
+
+<!-- BACK -->  
+<div class="gift-back">   
+<div class="gift-bg"></div>   
+ <div class="gift-top back-badge">  
+<span class="gift-roman"></span>  
+<span class="gift-lock"></span>
+
+  </div>  
+<div class="gift-back-title">  
+    <div class="gift-title"></div>  
+  </div>    <div class="gift-back-button">  
+    <button class="continue-btn">Continue</button>  
+  </div>  
+    </div>    </div>  
+</div>   
+<div class="gift-tile locked" data-id="4">  
+  <div class="gift-inner">  
+    <!-- FRONT -->  
+    <div class="gift-front">  
+<div class="gift-bg"></div>   
+      <div class="gift-top">  
+        <span class="gift-roman"></span>  
+        <span class="gift-lock">🔒</span>  
+      </div>  <div class="gift-center">  
+    <div class="gift-timer"></div>  
+    <div class="gift-unlock-text"></div>  <div class="gift-unlock-time">Not Reached Yet , <br> Come check at 3:00 Pm • Est </div>
+  </div>  
+</div>  
+
+<!-- BACK -->  
+<div class="gift-back">   
+<div class="gift-bg"></div>   
+<div class="gift-top back-badge">  
+<span class="gift-roman"></span>  
+<span class="gift-lock"></span>
+
+  </div>  
+<div class="gift-back-title">  
+    <div class="gift-title"></div>  
+  </div>    <div class="gift-back-button">  
+    <button class="continue-btn">Continue</button>  
+  </div>  
+    </div>    </div>  
+</div>   
+<div class="gift-tile locked" data-id="5">  
+  <div class="gift-inner">  <!-- FRONT -->  
+<div class="gift-front">
+
+<div class="gift-bg"></div>   
+      <div class="gift-top">  
+        <span class="gift-roman"></span>  
+        <span class="gift-lock">🔒</span>  
+      </div>  <div class="gift-center">  
+    <div class="gift-timer"></div>  
+    <div class="gift-unlock-text"></div>  <div class="gift-unlock-time">Bro' s cooking , <br> Come at 7:00 Pm • EST <br> To Eat</div>
+  </div>  
+</div>  
+
+<!-- BACK -->  
+<div class="gift-back">   
+<div class="gift-bg"></div>   
+<div class="gift-top back-badge">  
+<span class="gift-roman"></span>  
+<span class="gift-lock"></span>
+
+  </div>  
+<div class="gift-back-title">  
+    <div class="gift-title"></div>  
+  </div>    <div class="gift-back-button">  
+    <button class="continue-btn">Continue</button>  
+  </div>  
+    </div>    </div>  
+</div>   
+<div class="gift-tile locked" data-id="6">  
+  <div class="gift-inner">  <!-- FRONT -->  
+<div class="gift-front">
+
+ <div class="gift-bg"></div>   
+      <div class="gift-top">  
+        <span class="gift-roman"></span>  
+        <span class="gift-lock">🔒</span>  
+      </div>  <div class="gift-center">  
+    <div class="gift-timer"></div>  
+    <div class="gift-unlock-text"></div>  <div class="gift-unlock-time">No Rush For This One <br> Unlocks at 10:00 Pm • EST</div>
+  </div>  
+</div>  
+
+<!-- BACK -->  
+<div class="gift-back">   
+<div class="gift-bg"></div>   
+<div class="gift-top back-badge">  
+<span class="gift-roman"></span>  
+<span class="gift-lock"></span>
+
+  </div>  
+<div class="gift-back-title">  
+    <div class="gift-title"></div>  
+  </div>    <div class="gift-back-button">  
+    <button class="continue-btn">Continue</button>  
+  </div>  
+    </div>    </div>  
+</div>  
+  </div>    <div class="footer-text">  
+    It was made only for you.  
+  </div>  </div>   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>  <script> document.addEventListener("DOMContentLoaded", () => {    
+    
+/* ================= GIFT DATA ================= */    
+const gifts = [    
+  {   
+    id: 1,  
+    title: "Open when messages",  
+    unlockAt: "2026-01-21T00:00:00+05:30",  
+    page: "gift1.html",  
+    emoji: "💌",  
+    readyText: "Your gift is ready \n Tap to see what it is"  
+  },    
+  {   
+    id: 2,  
+    title: "No photos this time , got it fr😼",  
+    unlockAt: "2026-01-21T09:00:00+05:30",  
+    page: "gift2.html",  
+    emoji: "💐",  
+    readyText: "Ready hu maalkin ,\n tap to continue"  
+  },    
+  {   
+    id: 3,  
+    title: "No words , Just continue",  
+    unlockAt: "2026-01-21T12:00:00+05:30",  
+    page: "gift3.html",  
+    emoji: "📝",  
+    readyText: "The efforts you deserve \n tap to see"  
+  },    
+  {   
+    id: 4,  
+    title: "Something I got you",  
+    unlockAt: "2026-01-21T15:00:00+05:30",  
+    page: "gift4.html",  
+    emoji: "🎁",  
+    readyText: "I picked this for you\nTap to see"  
+  },  
+  {   
+    id: 5,  
+    title: "Lover boy trynna impress \n his girl 👀",  
+    unlockAt: "2026-01-21T10:16:00+05:30",  
+    page: "gift5.html",  
+    emoji: "🎀",  
+    readyText: "Another side of me \n tap to see"  
+  },  
+  {   
+    id: 6,  
+    title: "A day celebrated you",  
+    unlockAt: "2026-01-21T19:00:00+05:30",  
+    page: "gift6.html",  
+    emoji: "✨",  
+    readyText: "Ready For The Grand Finale? \nTap For Yes! "  
+  }    
+];  
+   
+/* ================= TIME HELPERS ================= */    
+function getRemainingTime(unlockAt) {    
+  const diff = new Date(unlockAt).getTime() - Date.now();    
+  if (diff <= 0) return null;    
+    
+  return {    
+    h: Math.floor(diff / 3600000),    
+    m: Math.floor((diff % 3600000) / 60000),    
+    s: Math.floor((diff % 60000) / 1000)    
+  };    
+}    
+    
+const pad = n => String(n).padStart(2, "0");    
+    
+/* ================= TILE UPDATE ================= */    
+function updateTile(tile, gift) {
+  const timerEl = tile.querySelector(".gift-timer");
+  const readyTextEl = tile.querySelector(".gift-unlock-text");
+  const unlockTimeEl = tile.querySelector(".gift-unlock-time");
+  const titleEl = tile.querySelector(".gift-title");
+
+  const isOpened = localStorage.getItem("giftOpened_" + gift.id);
+  const remaining = getRemainingTime(gift.unlockAt);
+
+  // =====================
+  // STILL LOCKED
+  // =====================
+  if (remaining) {
+    // TIMER
+    timerEl.style.display = "block";
+    timerEl.textContent =
+      `${pad(remaining.h)}:${pad(remaining.m)}:${pad(remaining.s)}`;
+
+    // TEXT STATES
+    if (readyTextEl) readyTextEl.style.display = "none";
+    if (unlockTimeEl) unlockTimeEl.style.display = "block";
+
+    // TITLE (unchanged)
+    if (titleEl) titleEl.textContent = gift.title;
+
+    return;
+  }
+
+  // =====================
+  // UNLOCKED
+  // =====================
+  timerEl.style.display = "none";
+  if (unlockTimeEl) unlockTimeEl.style.display = "none";
+
+  if (readyTextEl) {
+    readyTextEl.style.display = "block";
+    readyTextEl.textContent = gift.readyText;
+  }
+
+  if (!tile.classList.contains("unlocked")) {
+    tile.classList.add("unlocked");
+
+    const lockEls = tile.querySelectorAll(".gift-lock");
+    lockEls.forEach(el => (el.textContent = gift.emoji));
+  }
+
+  if (titleEl) titleEl.textContent = gift.title;
+
+  // If already opened before
+  // If already opened before (ONLY after flip, not just unlock)
+if (isOpened && tile.classList.contains("flip") && readyTextEl) {
+  readyTextEl.textContent = gift.title;
+}
+}
+/* ================= LIVE TIMER LOOP ================= */    
+function updateAllTiles() {  
+  document.querySelectorAll(".gift-tile").forEach(tile => {  
+  
+    // 🚫 Do NOT touch flipped tiles  
+    if (  
+  tile.classList.contains("flip") ||  
+  tile.classList.contains("no-update")  
+) return;  
+  
+    const id = Number(tile.dataset.id);  
+    const gift = gifts.find(g => g.id === id);  
+    if (!gift) return;  
+  
+    updateTile(tile, gift);  
+  });  
+}  
+document.querySelectorAll(".gift-tile").forEach(tile => {    
+  const id = tile.dataset.id;    
+  tile.querySelectorAll(".gift-roman").forEach(r => {  
+  r.textContent = ["I","II","III","IV","V","VI"][id - 1];  
+});  
+});     
+document.querySelectorAll(".gift-tile").forEach(tile => {  
+  const id = tile.dataset.id;  
+  const bgs = tile.querySelectorAll(".gift-bg");  
+  
+  bgs.forEach(bg => {  
+    bg.style.background =  
+      `url("gift${id}.png") center / cover no-repeat`;  
+  });  
+});  
+// RUN IMMEDIATELY (no pop-in)    
+updateAllTiles();    
+    
+// THEN keep ticking    
+ let lastTick = 0;  
+  
+function tick(now) {  
+  if (now - lastTick >= 1000) {  
+    updateAllTiles();  
+    lastTick = now;  
+  }  
+  requestAnimationFrame(tick);  
+}  
+  
+requestAnimationFrame(tick);   
+/* ================= CLICK LOGIC ================= */    
+document.addEventListener("click", e => {    
+    
+  // CONTINUE BUTTON    
+  // When continue button is clicked  
+if (e.target.classList.contains("continue-btn")) {    
+  e.stopPropagation();    
+  
+  const tile = e.target.closest(".gift-tile");    
+  const id = Number(tile.dataset.id);    
+  const gift = gifts.find(g => g.id === id);    
+  
+  // Save the opened state  
+  localStorage.setItem("giftOpened_" + id, "true");  
+  
+  // Flip tile and remove blur  
+  tile.classList.add("flip");  
+  tile.classList.add("unlocked");  
+  tile.classList.add("no-update");  
+  
+  // Remove blur from the back background  
+const backBg = tile.querySelector(".gift-back .gift-bg");  
+if (backBg) {  
+  backBg.style.filter = "none";  
+  backBg.style.backgroundColor = "rgba(0,0,0,0.38)";  
+  backBg.style.backgroundBlendMode = "darken"; // optional for a smoother look  
+}  
+  
+  // Show emoji and title  
+  const lockEls = tile.querySelectorAll(".gift-lock");  
+  lockEls.forEach(el => el.textContent = gift.emoji);  
+  
+  const titleEl = tile.querySelector(".gift-title");  
+  if (titleEl) titleEl.textContent = gift.title;  
+  
+  // Then redirect  
+  window.location.href = gift.page;    
+  return;    
+}  
+    
+  // TILE FLIP    
+  const tile = e.target.closest(".gift-tile");    
+  if (!tile) return;    
+  if (!tile.classList.contains("unlocked")) return;    
+    
+  tile.classList.add("flip");  
+tile.classList.add("no-update");  
+});     
+    
+/* ================= CONFETTI ================= */    
+function popConfetti() {    
+  confetti({    
+    particleCount: 500,    
+    angle: 60,    
+    spread: 55,    
+    startVelocity: 55,    
+    origin: { x: 0.1, y: 1 },    
+    colors: ["#d4af37", "#ffffff"]    
+  });    
+  confetti({    
+    particleCount: 500,    
+    angle: 120,    
+    spread: 55,    
+    startVelocity: 60,    
+    origin: { x: 0.9, y: 1 },    
+    colors: ["#d4af37", "#ffffff"]    
+  });    
+}    
+/* ================= BALLOONS ================= */    
+    
+const blueWhiteCount = 50;    
+const goldCount = 30;    
+    
+function createBalloon(color, className, index, total) {    
+  const balloon = document.createElement("div");    
+  balloon.className = `balloon ${className}`;    
+  balloon.style.left =    
+    (index / total) * 90 + Math.random() * 5 + "vw";    
+  balloon.style.background =    
+    `radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), ${color} 60%)`;    
+  balloon.style.animationDuration = 1.5 + Math.random() * 2 + "s";    
+    
+  document.body.appendChild(balloon);    
+  setTimeout(() => balloon.remove(), 20000);    
+}    
+    
+// Blue + White balloons (front)    
+for (let i = 0; i < blueWhiteCount; i++) {    
+  createBalloon(    
+    Math.random() > 0.5 ? "#dcefff" : "#ffffff",    
+    "blue-white",    
+    i,    
+    blueWhiteCount    
+  );    
+}    
+    
+// Gold balloons (slightly behind)    
+for (let i = 0; i < goldCount; i++) {    
+  createBalloon("#d4af37", "gold", i, goldCount);    
+}    
+window.addEventListener("load", popConfetti);     
+    
+    
+}); </script>  </body>  
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Open When</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@400&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #1a1a22, #0b0b0f);
+  color: #fff;
+  overflow: hidden;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  text-align: center;
+  padding: 22px 16px;
+}
+
+.header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+}
+
+/* ---------- SLIDER ---------- */
+.slider {
+  display: flex;
+  height: calc(100vh - 110px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- PAGE ---------- */
+.page {
+  min-width: 100vw;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 16px;
+  scroll-snap-align: start;
+}
+
+/* ---------- LETTER WRAPPER ---------- */
+.letter-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+/* ---------- LETTER TILE ---------- */
+.letter {
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #111;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.letter-wrap:hover .letter {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 42px rgba(0,0,0,0.65);
+}
+
+/* ---------- COVER IMAGE ---------- */
+.letter img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- TITLE ---------- */
+.letter-title {
+  font-size: 0.75rem;
+  text-align: center;
+  opacity: 0.75;
+  line-height: 1.2;
+}
+
+/* ---------- PAGE INDICATOR ---------- */
+.page-indicator {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  width: 18px;
+  border-radius: 10px;
+  background: #d4af37;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>Open When</h1>
+</div>
+
+<div class="slider">
+
+  <!-- PAGE 1 -->
+  <div class="page">
+    <div class="letter-wrap" onclick="openLetter(1)">
+      <div class="letter"><img src="covers/letter1.jpg"></div>
+      <div class="letter-title">Open When You First Receiev These</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(2)">
+      <div class="letter"><img src="covers/letter2.jpg"></div>
+      <div class="letter-title">Open When You're Happy</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(3)">
+      <div class="letter"><img src="covers/letter3.jpg"></div>
+      <div class="letter-title">Open When You Miss Me</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(4)">
+      <div class="letter"><img src="covers/letter4.jpg"></div>
+      <div class="letter-title">Open When You're Stressed</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(5)">
+      <div class="letter"><img src="covers/letter5.jpg"></div>
+      <div class="letter-title">Open When You Need To Laugh</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(6)">
+      <div class="letter"><img src="covers/letter6.jpg"></div>
+      <div class="letter-title">Open When You Feel Bored</div>
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page">
+    <div class="letter-wrap" onclick="openLetter(7)">
+      <div class="letter"><img src="covers/letter7.jpg"></div>
+      <div class="letter-title">Open When You're tired</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(8)">
+      <div class="letter"><img src="covers/letter8.jpg"></div>
+      <div class="letter-title">Open When You're Upset</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(9)">
+      <div class="letter"><img src="covers/letter9.jpg"></div>
+      <div class="letter-title">Open when you need a hug</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(10)">
+      <div class="letter"><img src="covers/letter10.jpg"></div>
+      <div class="letter-title">Open when you’re overthinking</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(11)">
+      <div class="letter"><img src="covers/letter11.jpg"></div>
+      <div class="letter-title">Open when you’re tired</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(12)">
+      <div class="letter"><img src="covers/letter12.jpg"></div>
+      <div class="letter-title">Open when you feel lost</div>
+    </div>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="page">
+    <div class="letter-wrap" onclick="openLetter(13)">
+      <div class="letter"><img src="covers/letter13.jpg"></div>
+      <div class="letter-title">Open when you feel happy</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(14)">
+      <div class="letter"><img src="covers/letter14.jpg"></div>
+      <div class="letter-title">Open when you miss us</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(15)">
+      <div class="letter"><img src="covers/letter15.jpg"></div>
+      <div class="letter-title">Open when you need reassurance</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(16)">
+      <div class="letter"><img src="covers/letter16.jpg"></div>
+      <div class="letter-title">Open when you feel insecure</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(17)">
+      <div class="letter"><img src="covers/letter17.jpg"></div>
+      <div class="letter-title">Open when you want to smile</div>
+    </div>
+
+    <div class="letter-wrap" onclick="openLetter(18)">
+      <div class="letter"><img src="covers/letter18.jpg"></div>
+      <div class="letter-title">Open When You've Opened All The Letters</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="page-indicator">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+<script>
+const slider = document.querySelector('.slider');
+const dots = document.querySelectorAll('.dot');
+
+slider.addEventListener('scroll', () => {
+  const pageWidth = window.innerWidth;
+  const index = Math.round(slider.scrollLeft / pageWidth);
+
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
+});
+
+function openLetter(id) {
+  window.location.href = `letter${id}.html`;
+}
+</script>
+
+</body>
+</html>

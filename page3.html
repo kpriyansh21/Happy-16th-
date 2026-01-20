@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make a Wish 🤍</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9)),
+    url("bg.png") center / cover no-repeat;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 520px;
+  padding: 24px 18px 40px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+
+video {
+  width: 100%;
+  border-radius: 14px;
+  background: black;
+  margin-bottom: 32px;
+}
+
+/* WISH SECTION */
+.wish-wrapper {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.4s ease;
+}
+
+.wish-wrapper.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.wish-btn {
+  background: linear-gradient(135deg, #f6d365, #e2b857);
+  color: #3b2a12;
+  border: none;
+  border-radius: 999px;
+  padding: 16px 38px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+}
+
+.subtext {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  opacity: 0.55;
+  font-style: italic;
+}
+
+/* CENTER-OUT PROGRESS BAR */
+.progress-track {
+  position: relative;
+  width: 160px;
+  height: 4px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 999px;
+  margin: 18px auto 0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #f6d365, #e2b857);
+  transform: translateX(-50%);
+}
+.whisper {
+  margin-top: 18px;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.75);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+  pointer-events: none;
+}
+
+.whisper.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Happy Birthday, <br> 
+  Rasmali </h1>
+
+  <video id="birthdayVideo" controls poster="thumbnail.png">
+    <source src="birthday-video.mp4" type="video/mp4">
+  </video>
+
+  <div class="wish-wrapper" id="wishWrapper">
+    <button class="wish-btn" id="wishBtn">Make a wish</button> 
+    <div class="whisper" id="whisperText">close your eyes, princess </div>
+    <div class="subtext">hold to continue<br>(Then close eyes and make a wish) </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const video = document.getElementById("birthdayVideo");
+const wishWrapper = document.getElementById("wishWrapper");
+const wishBtn = document.getElementById("wishBtn");
+const progressFill = document.getElementById("progressFill");
+const whisperText = document.getElementById("whisperText");
+
+let holdStart = null;
+let holding = false;
+let whisperTimeout = null;
+
+const HOLD_DURATION = 8000; // 13 seconds
+
+// Show wish section only after video ends
+video.addEventListener("ended", () => {
+  wishWrapper.classList.add("show");
+});
+
+function startHold() {
+  if (holding) return;
+
+  holding = true;
+  holdStart = performance.now();
+
+  // Start whisper ONLY after holding for 3.5s
+  whisperTimeout = setTimeout(() => {
+    whisperText.classList.add("show");
+  }, 2500);
+
+  requestAnimationFrame(updateProgress);
+}
+
+function endHold() {
+  holding = false;
+
+  // Reset progress
+  progressFill.style.width = "0%";
+
+  // Cancel whisper if released early
+  clearTimeout(whisperTimeout);
+  whisperText.classList.remove("show");
+}
+
+function updateProgress(now) {
+  if (!holding) return;
+
+  const elapsed = now - holdStart;
+  const progress = Math.min(elapsed / HOLD_DURATION, 1);
+  progressFill.style.width = `${progress * 100}%`;
+
+  if (progress >= 1) {
+    window.location.href = "page4.html";
+    return;
+  }
+
+  requestAnimationFrame(updateProgress);
+}
+
+// Desktop
+wishBtn.addEventListener("mousedown", startHold);
+wishBtn.addEventListener("mouseup", endHold);
+wishBtn.addEventListener("mouseleave", endHold);
+
+// Mobile
+wishBtn.addEventListener("touchstart", startHold);
+wishBtn.addEventListener("touchend", endHold);
+</script>
+
+</body>
+</html>
